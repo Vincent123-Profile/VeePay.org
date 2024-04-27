@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VeePay.ng</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <header>
+        <div class="logo">
+            <h1><img src="letter-v.png" alt="VeePay">eePay</h1>
+        </div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span class="toggle-icon"></span>
+            <span class="toggle-icon"></span>
+            <span class="toggle-icon"></span>
+        </div>
+        <nav class="menu">
+            <ul>
+                <li><a href="#" onclick="showLoader()">Home</a></li>
+                <li><a href="#" onclick="showLoader()">Services</a></li>
+                <li><a href="#" onclick="showLoader()">Contact</a></li>
+                <li><a href="#" onclick="showLoader()">Login</a></li>
+                <li><a href="#" onclick="showLoader()">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    
+    <div class="container">
+        <h1>Pay Bills & Transactions Using Whatsapp</h1>
+        <p class="subtitle">as easy as chatting with your loved ones</p>
+        <p>Electricity bill | Cable subscription | Recharge cards | Data bundle | and more...</p>
+        <div class="buttons">
+            <a href="http://wa.me/2348025542732" class="whatsapp-btn" onclick="showLoader()">WhatsApp <img src="" alt=""></a>
+            <a href="#" class="playstore-btn" onclick="showLoader()">Download App <img src="" alt=""></a>
+        </div>
+        <div class="illustration">
+            <img src="i.jpg" alt="">
+        </div>
+        <h2>Pay Utility bills via Whatsapp</h2>
+        <p>Money transfer and bill payments can be even easier using our WhatsApp channel.</p>
+        <a href="http://wa.me/2348025542732" class="whatsapp-chat-btn" onclick="showLoader()">Chat with VeePay on WhatsApp <img src="whatsapp (2).png" alt=""></a>
+    </div>
+
+
+    <div class="additional-header">
+        <h2>Using Veepay is Easy.</h2>
+    </div>
+
+    
+    <div class="our-services">
+        <h2>Our Services</h2>
+        <div class="service-container">
+            <img src="transfer.png" alt="Refund Logo">
+            <p>Fund Transfer</p>
+        </div>
+        <div class="service-container">
+            <img src="topup.png" alt="Airtime Logo">
+            <p>Airtime Topup</p>
+        </div>
+        <div class="service-container">
+            <img src="topup.png" alt="Airtime Logo">
+            <p>Cable TV Subscription</p>
+        </div>
+        <div class="service-container">
+            <img src="topup.png" alt="Airtime Logo">
+            <p>Meter Token</p>
+        </div>
+        <div class="service-container">
+            <img src="topup.png" alt="Airtime Logo">
+            <p>Data bundle</p>
+        </div>
+    </div>
+
+    
+    <div class="why">
+        <h1><img src="request.png" alt="Request Icon"> Why VeePay?</h1>
+        <div class="container">
+            <h2><img src="easy.png" alt="Easy Icon"> Easy to use</h2>
+            <p>VeePay lets you Pay Utility bills such as electricity, TV subscriptions, internet data bundles and more directly from your Whatsapp</p>
+        </div>
+        <div class="container">
+            <h2><img src="credit-card (1).png" alt="Credit Card Icon"> Secure Payment</h2>
+            <p>With our several years of experience and engineers, we have learnt in the past years to be able to fully optimize our platform for reliability and dependability..</p>
+        </div>
+        <div class="container">
+            <h2><img src="insignia (1).png" alt="Insignia Icon"> Payment</h2>
+            <p>24/7 secure & simple way to pay bills and transfer money.</p>
+        </div>
+    </div>
+
+    
+    <div class="we-are">
+        <h1>We're right here to assist you.</h1>
+        <a href="http://wa.me/2348025542732" class="button-link" onclick="showLoader()">Contact Us</a>
+    </div>
+
+    <div class="footer">
+        <h1><img src="letter-v.png" alt="VeePay">eePay</h1>
+        <a>VeePay is a protected of Veqi LTD business <span>08025542732</span></a>
+    </div>
+
+    <div class="quick">
+        <h1>Quick Links</h1>
+        <a href="#" onclick="showLoader()">Airtime Topup</a></li>
+        <a href="#" onclick="showLoader()">Cable TV Subscription</a></li>
+        <a href="#" onclick="showLoader()">Meter Token</a></li>
+        <a href="#" onclick="showLoader()">Data bundle</a></li>
+    </div>
+
+    <div class="support">
+        <h1>Support</h1>
+        <a href="#" onclick="showLoader()">Web Developer;s API</a></li>
+        <a href="#" onclick="showLoader()">Privacy Policy</a></li>
+        <a href="#" onclick="showLoader()">Term & Conditions</a></li>
+    </div>
+
+    <div class="Newsletter">
+        <h1>Newsletter</h1>
+        <p>Coming Soon .......</p>
+        <p>Copyright @2024 All rights reserved</p>
+    </div>
+    
+    <div id="loader" class="loader">
+        <div class="loader-content">
+            <h1>Mr~V</h1>
+            <div class="loader-animation"></div>
+        </div>
+    </div>
+
+    
+    
+    <script>
+        
+        function toggleMenu() {
+            var menu = document.querySelector('.menu');
+            var screenWidth = window.innerWidth;
+            
+           
+            if (screenWidth <= 768) {
+                menu.classList.toggle('show');
+            } else {
+                
+                menu.classList.add('show');
+            }
+        }
+
+        function showLoader() {
+            var loader = document.getElementById('loader');
+            loader.style.display = 'flex'; 
+            setTimeout(function(){
+                loader.style.display = 'none';
+            }, 1000); 
+        }
+    </script>
+    
+</body>
+</html>
