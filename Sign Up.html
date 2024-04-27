@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .signup-form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 90%;
+      margin: auto;
+    }
+
+    .signup-form h1, .signup-form h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="password"] {
+      width: calc(100% - 40px);
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-right: 40px;
+    }
+
+    .toggle-password {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+
+    .terms {
+      font-size: 14px;
+      margin-top: 20px;
+      color: #007bff;
+    }
+
+    .terms a {
+      color: #007bff;
+      text-decoration: underline;
+    }
+
+    .register-button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    @media only screen and (min-width: 768px) {
+      .signup-form {
+        width: 400px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-form">
+    <h1>Register Now</h1>
+    <h2>Please Enter Your Information</h2>
+    <form action="#" method="post">
+      <div class="form-group">
+        <label for="whatsapp">WhatsApp Number</label>
+        <input type="text" id="whatsapp" name="whatsapp" placeholder="WhatsApp Number" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Email Address" required>
+      </div>
+      <div class="form-group">
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="form-group-confirm">
+          <input type="password" id="password" name="password" placeholder="Password" required>
+          <span class="toggle-password" onclick="togglePassword('password')">👁️</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <div class="form-group-confirm">
+          <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+          <span class="toggle-password" onclick="togglePassword('confirmPassword')">👁️</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="pin">Account Pin</label>
+        <input type="password" id="pin" name="pin" placeholder="Account Pin" required>
+      </div>
+      <div class="form-group">
+        <label for="referrer">Referred By</label>
+        <input type="text" id="referrer" name="referrer" placeholder="Referred By">
+      </div>
+      <div class="form-group">
+        <input type="checkbox" id="terms" name="terms" required>
+        <label for="terms">By clicking the button below, you agree to our <a href="#" target="_blank">terms and conditions</a> and would love to subscribe to veepay newsletter and transactions updates. You can change this anytime in your account settings.</label>
+      </div>
+      <div class="form-group">
+        <input type="submit" class="register-button" value="Register">
+      </div>
+    </form>
+    <p class="terms">We respect your privacy. Your information will be kept confidential.</p>
+  </div>
+
+  <script>
+    function togglePassword(inputId) {
+      var input = document.getElementById(inputId);
+      if (input.type === "password") {
+        input.type = "text";
+      } else {
+        input.type = "password";
+      }
+    }
+  </script>
+</body>
+</html>
