@@ -1,51 +1,107 @@
-// Your web app's Firebase configuration
-const firebaseConfig = {
-    apiKey: "AIzaSyDObCfvc9Cf1BpR_P6y2loBWNhSUPgorqg",
-    authDomain: "veepay-4521d.firebaseapp.com",
-    projectId: "veepay-4521d",
-    storageBucket: "veepay-4521d.appspot.com",
-    messagingSenderId: "56228740854",
-    appId: "1:56228740854:web:1498028cdfdb533b3536d7",
-    measurementId: "G-LVLJ81JTMX"
-  };
-  
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth();
-  
-  // Set up the form submission
-  document.getElementById("forgot-password-form").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent default form submission
-  
-    // Get the user's email
-    const email = document.getElementById('email').value;
-  
-    // Send a password reset email to the user
-    auth.sendPasswordResetEmail(email)
-      .then(() => {
-        // Password reset email sent successfully
-        showSuccessMessage("Password reset email sent. Check your inbox.");
-      })
-      .catch((error) => {
-        // An error occurred
-        const errorMessage = error.message;
-        showErrorMessage(errorMessage);
-      });
-  });
-  
-  // Function to display success message
-  function showSuccessMessage(message) {
-    const errorMessageElement = document.getElementById('error-message');
-    errorMessageElement.textContent = message;
-    errorMessageElement.style.color = 'green';
-    errorMessageElement.style.display = 'block';
-  }
-  
-  // Function to display error message
-  function showErrorMessage(message) {
-    const errorMessageElement = document.getElementById('error-message');
-    errorMessageElement.textContent = message;
-    errorMessageElement.style.color = 'red';
-    errorMessageElement.style.display = 'block';
-  }
-  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forgot Password</title>
+  <style>
+    /* Your CSS styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    input[type="email"],
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    input[type="submit"] {
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    @media screen and (max-width: 600px) {
+      .container {
+        width: 90%;
+        margin: 20px auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Forgot Password</h2>
+    <form id="reset-form">
+      <label for="email">Enter your email address:</label>
+      <input type="email" id="email" name="email" required>
+      <input type="submit" value="Send Reset Link">
+    </form>
+  </div>
+
+  <!-- Firebase scripts -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+  <script>
+    // Your Firebase configuration
+    const firebaseConfig = {
+       apiKey: "AIzaSyDObCfvc9Cf1BpR_P6y2loBWNhSUPgorqg",
+       authDomain: "veepay-4521d.firebaseapp.com",
+       projectId: "veepay-4521d",
+       storageBucket: "veepay-4521d.appspot.com",
+       messagingSenderId: "56228740854",
+       appId: "1:56228740854:web:1498028cdfdb533b3536d7",
+       measurementId: "G-LVLJ81JTMX"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    // Add event listener to the reset form
+    document.getElementById("reset-form").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent default form submission
+
+      const email = document.getElementById('email').value;
+
+      // Send password reset email
+      auth.sendPasswordResetEmail(email)
+        .then(() => {
+          // Password reset email sent successfully
+          alert("Password reset link sent. Please check your email.");
+          // Redirect to sign-in page
+          window.location.href = "sign in.html";
+        })
+        .catch((error) => {
+          // Handle errors
+          alert(error.message);
+        });
+    });
+  </script>
+</body>
+</html>
