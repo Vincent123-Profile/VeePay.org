@@ -1,18 +1,14 @@
-
-    function togglePassword(inputId) {
-      var input = document.getElementById(inputId);
-      if (input.type === "password") {
-        input.type = "text";
-      } else {
-        input.type = "password";
-      }
+function togglePassword(inputId) {
+    var input = document.getElementById(inputId);
+    if (input.type === "password") {
+      input.type = "text";
+    } else {
+      input.type = "password";
     }
-
-
-
-
-    // Your web app's Firebase configuration
-const firebaseConfig = {
+  }
+  
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
     apiKey: "AIzaSyDObCfvc9Cf1BpR_P6y2loBWNhSUPgorqg",
     authDomain: "veepay-4521d.firebaseapp.com",
     projectId: "veepay-4521d",
@@ -22,7 +18,7 @@ const firebaseConfig = {
     measurementId: "G-LVLJ81JTMX"
   };
   firebase.initializeApp(firebaseConfig);
-
+  
   // Initialize variables
   const auth = firebase.auth();
   
@@ -56,3 +52,4 @@ const firebaseConfig = {
     const errorMessage = document.getElementById('error-message');
     errorMessage.style.display = 'block';
   }
+  
