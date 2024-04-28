@@ -3,92 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="sign up.css">
   <title>Sign Up Form</title>
-  <style>
-    /* Your CSS styles here */
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
-
-    .signup-form {
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      max-width: 400px;
-      width: 90%;
-      margin: auto;
-    }
-
-    .signup-form h1, .signup-form h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-      position: relative;
-    }
-
-    .form-group label {
-      display: block;
-      font-weight: bold;
-    }
-
-    .form-group input[type="text"],
-    .form-group input[type="email"],
-    .form-group input[type="password"] {
-      width: calc(100% - 40px);
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      margin-right: 40px;
-    }
-
-    .toggle-password {
-      position: absolute;
-      top: 50%;
-      right: 20px;
-      transform: translateY(-50%);
-      cursor: pointer;
-    }
-
-    .terms {
-      font-size: 14px;
-      margin-top: 20px;
-      color: #007bff;
-    }
-
-    .terms a {
-      color: #007bff;
-      text-decoration: underline;
-    }
-
-    .register-button {
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-      width: 100%;
-    }
-
-    @media only screen and (min-width: 768px) {
-      .signup-form {
-        width: 400px;
-      }
-    }
-  </style>
 </head>
 <body>
+  
+
   <div class="signup-form">
     <h1>Register Now</h1>
     <h2>Please Enter Your Information</h2>
@@ -140,85 +60,13 @@
     <p id="error-message" style="color: red; display: none;">Error: <span id="error-detail"></span></p>
   </div>
 
-  <!-- Firebase SDK initialization code -->
-  <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-analytics.js"></script>
-
-  <script>
-    // Your Firebase configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyDtLLe0CDLJJ7cVtTYTwrKTsHzLaW3ICFI",
-      authDomain: "veepay-e1e45.firebaseapp.com",
-      projectId: "veepay-e1e45",
-      storageBucket: "veepay-e1e45.appspot.com",
-      messagingSenderId: "500937836720",
-      appId: "1:500937836720:web:a14ea4ed0b19e099cb5375",
-      measurementId: "G-6Y34X612W1"
-    };
-  
-    // Initialize Firebase
-    const app = firebase.initializeApp(firebaseConfig);
-    const analytics = firebase.analytics();
-  
-    // Check if Firebase is initialized successfully
-    console.log("Firebase initialized successfully:", app);
-  
-    // Function to toggle password visibility
-    function togglePassword(inputId) {
-      var input = document.getElementById(inputId);
-      if (input.type === "password") {
-        input.type = "text";
-      } else {
-        input.type = "password";
-      }
-    }
-  
-    // Handle form submission
-    document.getElementById('signup-form').addEventListener('submit', function(event) {
-      event.preventDefault(); // Prevent form submission
-  
-      // Retrieve form data
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-      const whatsapp = document.getElementById('whatsapp').value;
-      const fullname = document.getElementById('fullname').value;
-      const pin = document.getElementById('pin').value;
-      const referrer = document.getElementById('referrer').value;
-  
-      // Create user with email and password
-      firebase.auth().createUserWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-          // User signed up successfully
-          const user = userCredential.user;
-  
-          // Store additional user information in Firestore
-          firebase.firestore().collection('users').doc(user.uid).set({
-              email: email,
-              whatsapp: whatsapp,
-              fullname: fullname,
-              pin: pin,
-              referrer: referrer
-              // Add more fields as needed
-            })
-            .then(() => {
-              // Additional information stored successfully
-              console.log("Additional information stored successfully.");
-              // Redirect or show success message
-            })
-            .catch((error) => {
-              // Handle Firestore errors
-              console.error("Error storing additional information:", error);
-              // Redirect or show error message
-            });
-        })
-        .catch((error) => {
-          // Handle sign-up errors
-          console.error("Error signing up:", error);
-          document.getElementById('error-detail').innerText = error.message;
-          document.getElementById('error-message').style.display = 'block';
-        });
-    });
-  </script>
 </body>
+
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
+  <script type="module" src="index.js" defer></script>
+
 </html>
