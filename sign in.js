@@ -1,3 +1,4 @@
+// Function to toggle password visibility
 function togglePassword(inputId) {
     var input = document.getElementById(inputId);
     if (input.type === "password") {
@@ -7,7 +8,7 @@ function togglePassword(inputId) {
     }
   }
   
-  // Your web app's Firebase configuration
+  // Firebase configuration
   const firebaseConfig = {
     apiKey: "AIzaSyDObCfvc9Cf1BpR_P6y2loBWNhSUPgorqg",
     authDomain: "veepay-4521d.firebaseapp.com",
@@ -17,9 +18,11 @@ function togglePassword(inputId) {
     appId: "1:56228740854:web:1498028cdfdb533b3536d7",
     measurementId: "G-LVLJ81JTMX"
   };
+  
+  // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   
-  // Initialize variables
+  // Initialize Firebase services
   const auth = firebase.auth();
   
   // Set up the sign-in function
@@ -37,11 +40,20 @@ function togglePassword(inputId) {
         const user = userCredential.user;
         console.log("User signed in:", user);
         // You can redirect the user to another page or perform any other action here
+        window.location.href = "dashboard.html"; // Example: Redirect to dashboard page
       })
       .catch((error) => {
-        // An error occurred
+        // An error occurred during sign-in
+        const errorCode = error.code;
         const errorMessage = error.message;
-        showError(errorMessage);
+        console.error("Sign-in error:", errorMessage);
+        
+        // Display appropriate error message based on error code
+        if (errorCode === "auth/user-not-found") {
+          showError("User not registered. Please sign up first.");
+        } else {
+          showError(errorMessage);
+        }
       });
   });
   
