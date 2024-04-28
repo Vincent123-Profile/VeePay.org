@@ -35,6 +35,4 @@
           alert(error.message);
         });
     });
-  </script>
-</body>
-</html>
+  

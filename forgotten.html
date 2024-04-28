@@ -69,8 +69,51 @@
   <!-- Firebase scripts -->
   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
   <!-- Your JavaScript -->
-  <script src="forgotten.js"></script>
+  <script>
+    // Your Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDObCfvc9Cf1BpR_P6y2loBWNhSUPgorqg",
+      authDomain: "veepay-4521d.firebaseapp.com",
+      projectId: "veepay-4521d",
+      storageBucket: "veepay-4521d.appspot.com",
+      messagingSenderId: "56228740854",
+      appId: "1:56228740854:web:1498028cdfdb533b3536d7",
+      measurementId: "G-LVLJ81JTMX"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    // Add event listener to the forgot password form
+    document.getElementById("forgot-password-form").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent default form submission
+
+      const email = document.getElementById('email').value;
+
+      // Send password reset email
+      auth.sendPasswordResetEmail(email)
+        .then(() => {
+          // Password reset email sent successfully
+          console.log("Password reset link sent. Please check your email.");
+          alert("Password reset link sent. Please check your email.");
+          // Redirect to sign-in page
+          window.location.href = "signin.html";
+        })
+        .catch((error) => {
+          // Handle errors
+          console.error("Error sending password reset email:", error);
+          if (error.code === "auth/user-not-found") {
+            // Email not registered
+            document.getElementById("error-message").innerText = "Email address not registered.";
+            document.getElementById("error-message").style.display = "block";
+          } else {
+            // Other errors
+            alert(error.message);
+          }
+        });
+    });
+  </script>
 </body>
 </html>
