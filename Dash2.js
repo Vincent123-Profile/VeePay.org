@@ -14,6 +14,7 @@ var firebaseConfig = {
   
   // Reference to the Firebase database
   const db = firebase.firestore();
+  const realTimeDB = firebase.database();
   
   // Function to update balance on the dashboard
   function updateBalance(balance) {
@@ -32,7 +33,7 @@ var firebaseConfig = {
       const userId = user.uid;
       
       // Retrieve user's display name from the Realtime Database
-      db.ref('users/' + userId + '/displayName').once('value').then(function(snapshot) {
+      realTimeDB.ref('users/' + userId + '/displayName').once('value').then(function(snapshot) {
         const displayName = snapshot.val();
         
         // Display username
