@@ -1,6 +1,5 @@
-
-  // Firebase configuration
-  var firebaseConfig = {
+// Firebase configuration
+var firebaseConfig = {
     apiKey: "AIzaSyDObCfvc9Cf1BpR_P6y2loBWNhSUPgorqg",
     authDomain: "veepay-4521d.firebaseapp.com",
     projectId: "veepay-4521d",
@@ -19,6 +18,11 @@
   // Function to update balance on the dashboard
   function updateBalance(balance) {
     document.getElementById('balance').innerText = balance;
+  }
+  
+  // Function to display a notification
+  function displayNotification(message) {
+    alert(message);
   }
   
   // Function to handle user authentication state changes
@@ -78,10 +82,14 @@
       })
       .then(function(docRef) {
         console.log("Document written with ID: ", docRef.id);
+        // Display a success notification
+        displayNotification("Trade successful!");
         // Optionally, you can display a success message or perform other actions here
       })
       .catch(function(error) {
         console.error("Error adding document: ", error);
+        // Display an error notification
+        displayNotification("Trade failed. Please try again later.");
         // Optionally, you can display an error message or handle the error here
       });
     } else {
