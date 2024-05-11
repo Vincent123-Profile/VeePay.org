@@ -40,7 +40,7 @@ function togglePassword(inputId) {
         const user = userCredential.user;
         console.log("User signed in:", user);
         // You can redirect the user to another page or perform any other action here
-        window.location.href = "index.html"; // Example: Redirect to dashboard page
+        window.location.href = "Dashbored.html"; // Example: Redirect to dashboard page
       })
       .catch((error) => {
         // An error occurred during sign-in

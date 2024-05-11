@@ -1,0 +1,89 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f6f6f6;
+  }
+  
+  header {
+    background-color: #3d52a0;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  section {
+    background-color: #7091e6;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    color: #3d52a0;
+  }
+  
+  form {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  label {
+    color: #555;
+    font-weight: bold;
+  }
+  
+  select, input[type="number"], textarea, button, input[type="file"] {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: calc(100% - 22px); /* Adjust for input padding and border */
+  }
+  
+  button {
+    cursor: pointer;
+    background-color: #3d52a0;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #2d3d6a;
+  }
+  
+  #transactionHistory {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  #historyList {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .historyItem {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    border-left: 4px solid #3d52a0;
+  }
+  
+  /* Media Query for Responsive Design */
+  @media screen and (max-width: 600px) {
+    main {
+      padding: 10px;
+    }
+    
+    section {
+      padding: 15px;
+    }
+  }
+  
