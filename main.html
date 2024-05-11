@@ -1,0 +1,61 @@
+# models.py (Django models)
+from django.db import models
+
+class Course(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.title
+
+# views.py (Django views)
+from django.shortcuts import render
+from .models import Course
+
+def home(request):
+    return render(request, 'home.html')
+
+def courses(request):
+    courses = Course.objects.all()
+    return render(request, 'courses.html', {'courses': courses})
+
+# urls.py (Django URLs)
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.home, name='home'),
+    path('courses/', views.courses, name='courses'),
+]
+
+<!-- home.html (HTML template) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VTU-Like Website</title>
+</head>
+<body>
+    <h1>Welcome to VTU-Like Website</h1>
+    <p>Explore our courses <a href="{% url 'courses' %}">here</a>.</p>
+</body>
+</html>
+
+<!-- courses.html (HTML template) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses</title>
+</head>
+<body>
+    <h1>Courses</h1>
+    <ul>
+        {% for course in courses %}
+            <li>{{ course.title }} - {{ course.description }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
