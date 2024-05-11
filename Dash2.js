@@ -1,12 +1,12 @@
 // Firebase configuration
 var firebaseConfig = {
     apiKey: "AIzaSyDObCfvc9Cf1BpR_P6y2loBWNhSUPgorqg",
-    authDomain: "veepay-4521d.firebaseapp.com",
-    projectId: "veepay-4521d",
-    storageBucket: "veepay-4521d.appspot.com",
-    messagingSenderId: "56228740854",
-    appId: "1:56228740854:web:1498028cdfdb533b3536d7",
-    measurementId: "G-LVLJ81JTMX"
+      authDomain: "veepay-4521d.firebaseapp.com",
+      projectId: "veepay-4521d",
+      storageBucket: "veepay-4521d.appspot.com",
+      messagingSenderId: "56228740854",
+      appId: "1:56228740854:web:1498028cdfdb533b3536d7",
+      measurementId: "G-LVLJ81JTMX"
   };
   
   // Initialize Firebase
@@ -31,8 +31,15 @@ var firebaseConfig = {
       // User is signed in.
       const userId = user.uid;
       
-      // Display username
-      document.getElementById('welcomeMessage').innerText = "Welcome to Your Dashboard, " + user.displayName;
+      // Retrieve user's display name from the Realtime Database
+      db.ref('users/' + userId + '/displayName').once('value').then(function(snapshot) {
+        const displayName = snapshot.val();
+        
+        // Display username
+        document.getElementById('welcomeMessage').innerText = "Welcome to Your Dashboard, " + displayName;
+      }).catch(function(error) {
+        console.error("Error getting user's display name:", error);
+      });
       
       // Retrieve user data from the database
       db.collection("users").doc(userId).get().then(function(doc) {
@@ -40,9 +47,9 @@ var firebaseConfig = {
           // Update balance on the dashboard
           updateBalance(doc.data().balance);
         } else {
-          // User data doesn't exist, create a new document
+          // User data doesn't exist, create a new document with balance set to 0
           db.collection("users").doc(userId).set({
-            username: user.displayName,
+            username: displayName, // Use the retrieved display name
             balance: 0
           }).then(function() {
             // Update balance on the dashboard
