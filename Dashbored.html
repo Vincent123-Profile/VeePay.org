@@ -61,8 +61,13 @@
   <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-storage.js"></script>
+  
+
+
+
   <script src="Dash.js"></script>
   <script>
+     document.addEventListener('DOMContentLoaded', function() {
     // Firebase configuration
     var firebaseConfig = {
         apiKey: "AIzaSyDObCfvc9Cf1BpR_P6y2loBWNhSUPgorqg",
@@ -193,6 +198,7 @@
         console.log("User is not signed in.");
       }
     });
+});
   </script>
 </body>
 </html>
